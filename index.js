@@ -13,13 +13,7 @@ module.exports = class test extends Plugin {
 
 
         const getSetting = (setting) => this.settings.get(setting);
-
-
-
-
-
-
-
+        this.loadStylesheet('style.scss')
         function getUser(id) {
             var list = getSetting("userTags")
             return list.find(e=> e.id == id)

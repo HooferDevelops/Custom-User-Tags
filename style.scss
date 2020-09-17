@@ -1,3 +1,36 @@
-.downloadLink-1ywL9o {
-    position: relative !important;
+/* BOT TAG PLUGIN */
+
+@keyframes animated {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.bot-tag-plugin {
+    color: #fff;
+    background: #7289DA;
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    height: 1.28em;
+    padding: 1px 4px;
+    border-radius: 3px;
+    line-height: 1.3;
+    margin-left: 4px;
+    margin-bottom: 4px;
+}
+
+.bot-tag-tooltip {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.bot-tag-animated > div {
+    background-size: 200% 200% !important;
+    animation: animated 3s ease infinite !important;
+}
+
+.bottom-margin-large-bot-tag {
+    margin: 12px;
+    transform: scale(1.5);
 }
