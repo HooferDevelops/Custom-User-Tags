@@ -74,10 +74,10 @@ module.exports = class Settings extends React.PureComponent {
                         
                         <div>
                             <CategoryImage image={user.pfp} name={user.name} opened={user.open} onChange={(p)=>{updateSetting('userTags', this.toggle(i, p))}}>
-                                <h1 style={{color: "white"}}>Preview</h1>
+                                <h1 style={{'color': 'lightgrey'}}>Preview</h1>
                                 <Tag tagName={user.tag} style={{background: user.background, color: user.fontcolor}} classType={`bot-tag-tooltip bottom-margin-large-bot-tag ${user.animated}`}></Tag>
 
-                                <h1 style={{color: "white"}}>Basic Configuration</h1>
+                                <h1 style={{'color': 'lightgrey', 'margin-bottom': '12px'}}>Basic Configuration</h1>
                                 <TextInput
                                 defaultValue={user.id}
                                 onChange={p=>{
@@ -109,7 +109,7 @@ module.exports = class Settings extends React.PureComponent {
                                     Set User Tag
                                 </TextInput>
 
-                                <h1 style={{color: "white"}}>Customization</h1>
+                                <h1 style={{'color': 'lightgrey', 'margin-bottom': '12px'}}>Customization</h1>
                                 <TextInput
                                 defaultValue={user.background}
                                 onChange={p=>{
@@ -128,7 +128,7 @@ module.exports = class Settings extends React.PureComponent {
                                 >
                                     Set Tag Text Color
                                 </TextInput>
-                                <h1 style={{color: "white"}}>Advanced Configuration</h1>
+                                <h1 style={{'color': 'lightgrey', 'margin-bottom': '12px'}}>Advanced Configuration</h1>
                                 <SwitchItem
                                     value={user.animated}
                                     onChange={p=>{
