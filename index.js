@@ -4,7 +4,7 @@ const { inject, uninject } = require('powercord/injector');
 const Settings = require('./components/Settings');
 const tag = require('./components/Tag.jsx');
 
-module.exports = class test extends Plugin {
+module.exports = class CustomUserTags extends Plugin {
     
 
 
