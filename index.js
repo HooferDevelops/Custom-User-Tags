@@ -33,7 +33,7 @@ module.exports = class test extends Plugin {
             console.log(user);
             if (user != null){
                 res.props.children[1].props.children.join()
-                res.props.children[1].props.children.splice(2, 0, React.createElement(tag,{style: {'background': user.background}, tagName: user.tag, classType: `bot-tag-tooltip ${user.animated}`}))
+                res.props.children[1].props.children.splice(2, 0, React.createElement(tag,{style: {'background': user.background, 'color': user.fontcolor}, tagName: user.tag, classType: `bot-tag-tooltip ${user.animated}`}))
                 res.props.children[1].props.children.join()
                 
             }
@@ -45,7 +45,7 @@ module.exports = class test extends Plugin {
             var user = getUser(id);
             if (user != null){
                 res.props.name.props.children = [res.props.name.props.children]
-                res.props.name.props.children.push(React.createElement(tag,{style: {'background': user.background}, tagName: user.tag, classType: `bot-tag-tooltip ${user.animated}`}));
+                res.props.name.props.children.push(React.createElement(tag,{style: {'background': user.background, 'color': user.fontcolor}, tagName: user.tag, classType: `bot-tag-tooltip ${user.animated}`}));
             } else if (this.props.user.bot == true){
                 res.props.name.props.children = [res.props.name.props.children]
                 res.props.name.props.children.push(React.createElement(tag,{tagName: "BOT", classType: "bot-tag-tooltip"}));

@@ -18,7 +18,7 @@ module.exports = class Settings extends React.PureComponent {
     info = getModule(["getUser"], false).getUser
 
     addNewUser(){
-        users.push({open: false, id: "000000000000000000", tag: "BOT", background: "#7289DA", animated: false, name: "INVALID USER", pfp: "https://discordapp.com/assets/6debd47ed13483642cf09e832ed0bc1b.png"});
+        users.push({open: false, id: "000000000000000000", tag: "BOT", background: "#7289DA", fontcolor: "#FFFFFF", animated: false, name: "INVALID USER", pfp: "https://discordapp.com/assets/6debd47ed13483642cf09e832ed0bc1b.png"});
         return users;
     }
     removeUser(i){
@@ -37,6 +37,10 @@ module.exports = class Settings extends React.PureComponent {
     }
     updateUserBackground(i,bg){
         users[i].background = bg;
+        return users;
+    }
+    updateUserFontColor(i,color){
+        users[i].fontcolor = color;
         return users;
     }
     toggle(i,val){
@@ -70,10 +74,10 @@ module.exports = class Settings extends React.PureComponent {
                         
                         <div>
                             <CategoryImage image={user.pfp} name={user.name} opened={user.open} onChange={(p)=>{updateSetting('userTags', this.toggle(i, p))}}>
-                                <h1>Preview</h1>
-                                <Tag tagName={user.tag} style={{background: user.background}} classType={`bot-tag-tooltip bottom-margin-large-bot-tag ${user.animated}`}></Tag>
+                                <h1 style={{color: "white"}}>Preview</h1>
+                                <Tag tagName={user.tag} style={{background: user.background, color: user.fontcolor}} classType={`bot-tag-tooltip bottom-margin-large-bot-tag ${user.animated}`}></Tag>
 
-                                <h1>Basic Configuration</h1>
+                                <h1 style={{color: "white"}}>Basic Configuration</h1>
                                 <TextInput
                                 defaultValue={user.id}
                                 onChange={p=>{
@@ -105,7 +109,7 @@ module.exports = class Settings extends React.PureComponent {
                                     Set User Tag
                                 </TextInput>
 
-                                <p>Customization</p>
+                                <h1 style={{color: "white"}}>Customization</h1>
                                 <TextInput
                                 defaultValue={user.background}
                                 onChange={p=>{
@@ -115,7 +119,16 @@ module.exports = class Settings extends React.PureComponent {
                                 >
                                     Set Tag Background
                                 </TextInput>
-                                <p>Advanced Configuration</p>
+                                <TextInput
+                                defaultValue={user.fontcolor}
+                                onChange={p=>{
+                                    updateSetting('userTags', this.updateUserFontColor(i,p))
+                                }}
+                                note={"This allows all css values for the color attribute."}
+                                >
+                                    Set Tag Text Color
+                                </TextInput>
+                                <h1 style={{color: "white"}}>Advanced Configuration</h1>
                                 <SwitchItem
                                     value={user.animated}
                                     onChange={p=>{
