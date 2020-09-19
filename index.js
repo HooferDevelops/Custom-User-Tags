@@ -29,7 +29,7 @@ module.exports = class CustomUserTags extends Plugin {
         const MessageTimestamp = await getModule(["MessageTimestamp"]);
         inject('bot-tag-message', MessageTimestamp, "default", function(args, res){
             var id = args[0].message.author.id;
-            var user = getUser(id
+            var user = getUser(id);
             if (user != null){
                 res.props.children[1].props.children.join()
                 res.props.children[1].props.children.splice(2, 0, React.createElement(tag,{style: {'background': user.background, 'color': user.fontcolor}, tagName: user.tag, classType: `bot-tag-tooltip ${user.animated}`}))
