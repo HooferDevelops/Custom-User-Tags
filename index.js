@@ -26,6 +26,7 @@ module.exports = class CustomUserTags extends Plugin {
         });
 
         const PrivateChannel = await getModuleByDisplayName('PrivateChannel');
+        const MemberListItem = await getModuleByDisplayName('MemberListItem'); // thanks badges-everywhere
         const MessageTimestamp = await getModule(["MessageTimestamp"]);
         inject('bot-tag-message', MessageTimestamp, "default", function(args, res){
             var id = args[0].message.author.id;
@@ -38,6 +39,17 @@ module.exports = class CustomUserTags extends Plugin {
             }
             return res;
         })
+        inject('bot-tag-members', MemberListItem.prototype, 'renderDecorators', function(args, res){
+            if (!this.props.user.id) return res;
+            var id = this.props.user.id
+            var user = getUser(id);
+            if (user != null){
+                res.props.children[0] = React.createElement(tag,{style: {'background': user.background, 'color': user.fontcolor}, tagName: user.tag, classType: `bot-tag-tooltip ${user.animated}`})
+            } else if (this.props.user.bot == true) {
+                res.props.children[0] = React.createElement(tag,{tagName: "BOT", classType: "bot-tag-tooltip"})
+            }
+            return res;
+        })
         inject('bot-tag-sidebar', PrivateChannel.prototype, 'render', function (args, res) {
             if (!this.props.user) return res;
             var id = this.props.user.id
@@ -47,7 +59,7 @@ module.exports = class CustomUserTags extends Plugin {
                 res.props.name.props.children.push(React.createElement(tag,{style: {'background': user.background, 'color': user.fontcolor}, tagName: user.tag, classType: `bot-tag-tooltip ${user.animated}`}));
             } else if (this.props.user.bot == true){
                 res.props.name.props.children = [res.props.name.props.children]
-                res.props.name.props.children.push(React.createElement(tag,{tagName: "BOT", classType: "bot-tag-tooltip"}));
+                res.props.name.props.children.push(React.createElement(tag,{tagName: "BOT", classType: "bot-tag-tooltip"})); // heck off i'm doing it this way, i don't know a better way help me (っ °Д °;)っ
             }
             return res;
         })
@@ -62,6 +74,7 @@ module.exports = class CustomUserTags extends Plugin {
     pluginWillUnload(){
         uninject('bot-tag-message')
         uninject('bot-tag-sidebar')
+        uninject('bot-tag-members')
         powercord.api.settings.unregisterSettings('bot-tag-settings');
     }
 
