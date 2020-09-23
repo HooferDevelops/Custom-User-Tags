@@ -6,26 +6,14 @@
     100%{background-position:0% 50%}
 }
 
-.bot-tag-plugin {
-    color: #fff;
-    background: #7289DA;
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 500;
-    height: 1.28em;
-    padding: 1px 4px;
-    border-radius: 3px;
-    line-height: 1.3;
-    margin-left: 4px;
-    margin-bottom: 4px;
-}
 
 .bot-tag-tooltip {
     cursor: pointer;
     display: inline-block;
 }
 
-.bot-tag-animated > div {
+.bot-tag-animated > span {
+    text-transform: initial;
     background-size: 200% 200% !important;
     animation: animated 3s ease infinite !important;
 }
