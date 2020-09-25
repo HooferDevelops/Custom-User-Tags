@@ -172,12 +172,6 @@ module.exports = class Settings extends React.PureComponent {
                 >Show Tags in Member List</SwitchItem>
 
 
-            <a
-            style={{fontSize: "10px"}}
-            onClick={()=> {
-                require("electron").shell.openExternal("http://iman.engineer");
-            }}
-            >More Plugins & Themes</a>
             </div>
         )
     }
