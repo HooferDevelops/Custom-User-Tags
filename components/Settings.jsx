@@ -5,7 +5,7 @@ const Tag = require("./Tag");
 const CategoryImage = require("./CategoryImg");
 
 var users = [];
-
+var extraSettings = {};
 module.exports = class Settings extends React.PureComponent {
     constructor (props) {
         super(props);
@@ -55,13 +55,26 @@ module.exports = class Settings extends React.PureComponent {
         }
         return users;
     }
+    toggleMemberList(val){
+        if (extraSettings.showMemberList){
+            extraSettings.showMemberList = false;
+        } else {
+            extraSettings.showMemberList = true;
+        }
+        return extraSettings;
+    }
 
     render() {
         const { getSetting, updateSetting } = this.props;
         users = getSetting("userTags");
+        extraSettings = getSetting("extraSettings")
         if (!users){
             users = []
             updateSetting("userTags", users)
+        }
+        if (!extraSettings){
+            extraSettings = {"showMemberList": true}
+            updateSetting("extraSettings", extraSettings)
         }
         return(
             <div>
@@ -149,6 +162,16 @@ module.exports = class Settings extends React.PureComponent {
                     Add New User
                     </Button>   
                 </Category>
+                <h1 style={{'color': 'lightgrey', 'margin-bottom': '12px'}}>Extra Settings</h1>
+
+                <SwitchItem
+                    value={extraSettings.showMemberList}
+                    onChange={p=>{
+                        updateSetting('extraSettings', this.toggleMemberList(false))
+                    }}
+                >Show Tags in Member List</SwitchItem>
+
+
             <a
             style={{fontSize: "10px"}}
             onClick={()=> {
