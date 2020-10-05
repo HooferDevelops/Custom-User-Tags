@@ -49,7 +49,6 @@ module.exports = class CustomUserTags extends Plugin {
             var user = getUser(id);
             if (user != null){
                 res.props.children[1].props.children.join()
-                console.log(user.background);
                 res.props.children[1].props.children.splice(2, 0, React.createElement(tag,{style: {'margin-left': '0px', 'background': user.background, 'color': user.fontcolor}, tagName: user.tag, classType: `bot-tag-tooltip ${user.animated}`, extra: "botTagCozy-1fFsZk botTag-1un5a6 botTagRegular-2HEhHi botTag-2WPJ74 rem-2m9HGf toprole-wrapper tag"}))
                  res.props.children[1].props.children.join()
                 
