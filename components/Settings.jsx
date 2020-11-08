@@ -63,6 +63,15 @@ module.exports = class Settings extends React.PureComponent {
         }
         return extraSettings;
     }
+    updateUserPreviews(){
+        users.map((user,i)=>{
+            console.log(user);
+            var p = user.id;
+            this.info(p.toString()).then(res=>{
+                this.props.updateSetting('userTags', this.updateUserId(i,p,res.username, res.avatarURL))
+            })
+        })
+    }
 
     render() {
         const { getSetting, updateSetting } = this.props;
@@ -82,7 +91,7 @@ module.exports = class Settings extends React.PureComponent {
 
 
                 
-                <Category name="Users" description="Add and remove user tags for users" opened={this.state.listOpened} onChange={p=>{this.setState({"listOpened": p})}}>
+                <Category name="Users" description="Add and remove user tags for users" opened={this.state.listOpened} onChange={p=>{this.updateUserPreviews(); this.setState({"listOpened": p})}}>
                     {users.map((user, i) => (
                         
                         <div>
@@ -170,7 +179,6 @@ module.exports = class Settings extends React.PureComponent {
                         updateSetting('extraSettings', this.toggleMemberList(false))
                     }}
                 >Show Tags in Member List</SwitchItem>
-
 
             </div>
         )
