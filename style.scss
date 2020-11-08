@@ -6,10 +6,13 @@
     100%{background-position:0% 50%}
 }
 
-
 .bot-tag-tooltip {
     cursor: pointer;
     display: inline-block;
+}
+
+.bot-tag-tooltip > span {
+    text-transform: initial;
 }
 
 .bot-tag-animated > span {
