@@ -1,3 +1,27 @@
-.suspicious-url, .suspicious-url-tooltip {
-    display: inline;
+/* BOT TAG PLUGIN */
+
+@keyframes animated {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.bot-tag-tooltip {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.bot-tag-tooltip > span {
+    text-transform: initial;
+}
+
+.bot-tag-animated > span {
+    text-transform: initial;
+    background-size: 200% 200% !important;
+    animation: animated 3s ease infinite !important;
+}
+
+.bottom-margin-large-bot-tag {
+    margin: 12px;
+    transform: scale(1.5);
 }
