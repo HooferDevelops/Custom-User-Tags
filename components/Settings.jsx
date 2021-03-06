@@ -70,6 +70,11 @@ module.exports = class Settings extends React.PureComponent {
             this.info(p.toString()).then(res=>{
                 this.props.updateSetting('userTags', this.updateUserId(i,p,res.username, res.avatarURL))
             })
+            .catch((err)=>{
+                if (err){
+                    this.props.updateSetting('userTags', this.updateUserId(i,p,"INVALID USER", "https://discordapp.com/assets/6debd47ed13483642cf09e832ed0bc1b.png"))
+                }
+            })
         })
     }
 
